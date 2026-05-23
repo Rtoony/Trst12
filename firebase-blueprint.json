@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and extraction preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "preferences": {
+          "type": "object",
+          "properties": {
+            "lookFor": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "ignore": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["uid", "email"]
+    },
+    "Document": {
+      "title": "Document",
+      "description": "Extracted document data",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "fileName": { "type": "string" },
+        "mimeType": { "type": "string" },
+        "extractedContent": { "type": "string" },
+        "extractedJson": { "type": "object" },
+        "format": { "type": "string", "enum": ["json", "md"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "fileName", "extractedContent", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "documents/{documentId}": {
+      "schema": "Document",
+      "description": "Stored document extractions"
+    }
+  }
+}

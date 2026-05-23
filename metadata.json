@@ -1,0 +1,6 @@
+{
+  "name": "CA Firearms Transfer Compliance",
+  "description": "AI-powered compliance extractor for California firearms transfers, focusing on ATF 4473, DROS, and FSC documentation.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}

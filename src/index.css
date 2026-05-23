@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-primary: #1E293B;
+  --color-brand-accent: #6366F1;
+  --color-surface-bg: #F8FAFC;
+  --color-surface-card: #FFFFFF;
+  --color-border-subtle: #E2E8F0;
+  --color-border-strong: #1E293B;
+}
+
+@layer base {
+  body {
+    @apply antialiased text-brand-primary bg-surface-bg font-sans;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-brand-primary/10 rounded-full hover:bg-brand-primary/20 transition-colors;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+}
+
+/* Institutional Design Patterns */
+.institutional-grid {
+  background-image: radial-gradient(var(--color-border-subtle) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.regulatory-border {
+  @apply border border-brand-primary/10 shadow-[4px_4px_0px_0px_rgba(30,41,59,0.05)];
+}
+
+.tech-input {
+  @apply bg-white border border-border-subtle rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all font-mono;
+}
+
+/* Markdown overrides */
+.markdown-body {
+  @apply text-sm leading-relaxed font-sans;
+}
+
+.markdown-body h1 { @apply text-xl font-bold mb-4 mt-6 first:mt-0 tracking-tight; }
+.markdown-body h2 { @apply text-lg font-bold mb-3 mt-5 tracking-tight border-b border-border-subtle pb-1; }
+.markdown-body h3 { @apply text-base font-bold mb-2 mt-4 tracking-tight; }
+.markdown-body p { @apply mb-4 text-brand-primary/80; }
+.markdown-body ul, .markdown-body ol { @apply mb-4 pl-5 list-disc; }
+.markdown-body li { @apply mb-1; }
+.markdown-body code { @apply bg-brand-primary/5 px-1.5 py-0.5 rounded font-mono text-[13px]; }
+.markdown-body pre { @apply bg-brand-primary/5 p-4 rounded-xl mb-4 overflow-x-auto border border-border-subtle; }
+.markdown-body table { @apply w-full border-collapse mb-4 font-mono text-xs; }
+.markdown-body th { @apply text-left border-b border-brand-primary/20 p-2 font-bold uppercase tracking-wider bg-brand-primary/5; }
+.markdown-body td { @apply border-b border-border-subtle p-2 text-brand-primary/70; }
